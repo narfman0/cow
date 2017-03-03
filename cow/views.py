@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.core.urlresolvers import reverse_lazy, reverse
-from django.http.response import HttpResponseRedirect
+from django.core.urlresolvers import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
 from .models import Page
 

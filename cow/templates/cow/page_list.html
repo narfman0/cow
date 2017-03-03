@@ -1,5 +1,24 @@
-{% extends "base.html" %}
+{% extends "cow/base.html" %}
 
 {% block content %}
-    {% include "cow/page_list_table.html" with pages=object_list %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>content</th>
+            <th>created</th>
+            <th>updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for page in object_list %}
+            <tr>
+                <td><a href="{% url 'page_detail' page.id %}">{{ page.name }}</a></td>
+                <td>{{ page.content|slice:"0:199" }}...</td>
+                <td>{{ page.created }}</td>
+                <td>{{ page.last_updated }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
