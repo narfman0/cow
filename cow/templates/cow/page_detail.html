@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="bs-callout bs-callout-warning">
+        <h4>Page detail for: {{ page.name }}</h4>
+    </div>
+    {% include "cow/page_list_table.html" %}
+{% endblock %}
