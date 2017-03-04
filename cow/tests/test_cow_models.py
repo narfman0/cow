@@ -17,19 +17,18 @@ from cow import models
 
 
 class TestCow(TestCase):
-    def setUp(self):
-        self.pages = []
-        for i in range(9):
-            page = models.Page.objects.create(name='test1', content=str(i))
-            self.pages.append(page)
-            page.created -= timedelta(days=i)
-            page.save()
-
-    def test_generate_simple(self):
+    def test_page_simple(self):
         # stupid test to touch code/models
-        extra = models.Page.objects.create(name='test1', content='2')
-        extra.delete()
+        page = models.Page.objects.create(name='test1', content='2')
+        page.delete()
 
-    def tearDown(self):
-        for page in self.pages:
-            page.delete()
+    def test_menu_node_simple(self):
+        page = models.Page.objects.create(name='test1', content='2')
+        child = models.MenuNode.objects.create(title='title1', page=page)
+        parent = models.MenuNode.objects.create(title='title1')
+        parent.children.add(child)
+        parent.save()
+        self.assertTrue(len(parent.children.values()) > 0)
+        parent.delete()
+        child.delete()
+        page.delete()

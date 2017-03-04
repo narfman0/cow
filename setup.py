@@ -32,7 +32,7 @@ readme = open('README.rst').read()
 setup(
     name='cow',
     version=version,
-    description="Django mobile S3+Lambda friendly CMS",
+    description="Yuge heifer-like bloated CMS - now with more django, S3, Lambda friendliness!",
     long_description=readme,
     author='Jon Robison',
     author_email='narfman0@gmail.com',
@@ -41,7 +41,7 @@ setup(
         'cow',
     ],
     include_package_data=True,
-    install_requires=['django-tinymce',],
+    install_requires=['django', 'django-tinymce'],
     license="MIT",
     zip_safe=False,
     keywords=['django','cow','cms'],

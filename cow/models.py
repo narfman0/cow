@@ -16,3 +16,14 @@ class Page(models.Model):
 
     def __str__(self):
         return 'Page: ' + str(self.name)
+
+
+@python_2_unicode_compatible
+class MenuNode(models.Model):
+    title = models.CharField(max_length=200)
+    page = models.ForeignKey(Page, null=True, blank=True)
+    children = models.ManyToManyField('self')
+    enabled = models.BooleanField(default=True)
+
+    def __str__(self):
+        return 'MenuNode: ' + str(self.title)
