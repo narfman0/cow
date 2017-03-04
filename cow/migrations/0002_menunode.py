@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200)),
                 ('enabled', models.BooleanField(default=True)),
-                ('children', models.ManyToManyField(related_name='_menunode_children_+', to='cow.MenuNode')),
+                ('children', models.ManyToManyField(blank=True, related_name='_menunode_children_+', to='cow.MenuNode')),
                 ('page', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='cow.Page')),
             ],
         ),

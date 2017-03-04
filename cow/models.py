@@ -22,7 +22,7 @@ class Page(models.Model):
 class MenuNode(models.Model):
     title = models.CharField(max_length=200)
     page = models.ForeignKey(Page, null=True, blank=True)
-    children = models.ManyToManyField('self')
+    children = models.ManyToManyField('self', blank=True)
     enabled = models.BooleanField(default=True)
 
     def __str__(self):
