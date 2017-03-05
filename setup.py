@@ -8,7 +8,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '0.2.0'
+version = '0.2.1'
 
 if sys.argv[-1] == 'publish':
     try:
@@ -41,7 +41,12 @@ setup(
         'cow',
     ],
     include_package_data=True,
-    install_requires=['django', 'django-tinymce'],
+    install_requires=[
+        'django',
+        'django-tinymce',
+        'pillow',
+        'sorl-thumbnail'
+    ],
     license="MIT",
     zip_safe=False,
     keywords=['django','cow','cms'],

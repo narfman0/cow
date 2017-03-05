@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+from sorl.thumbnail import ImageField
 from tinymce.models import HTMLField
 
 
@@ -57,3 +58,11 @@ class AddressPlugin(models.Model):
 
     def __str__(self):
         return 'AddressPlugin: ' + str(self.address)
+
+
+@python_2_unicode_compatible
+class ImagePlugin(models.Model):
+    image = ImageField(upload_to="images")
+
+    def __str__(self):
+        return 'ImagePlugin: ' + str(self.image)

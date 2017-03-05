@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AddressPlugin, MenuNode, Page, Plugin, TextPlugin
+from .models import AddressPlugin, ImagePlugin, MenuNode, Page, Plugin, TextPlugin
 
 
 class PageAdmin(admin.ModelAdmin):
@@ -29,3 +29,5 @@ class AddressPluginAdmin(admin.ModelAdmin):
     list_display = ('id', 'address')
     search_fields = ('id', 'address')
 admin.site.register(AddressPlugin, AddressPluginAdmin)
+
+admin.site.register(ImagePlugin)

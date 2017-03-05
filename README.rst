@@ -31,6 +31,7 @@ Add it to your `INSTALLED_APPS`:
     INSTALLED_APPS = (
         ...
         'tinymce',
+        'sorl.thumbnail',
         'cow',
         ...
     )
@@ -67,7 +68,6 @@ TODO
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and
   metaphorical dead weight
-* Images uploads, referencing via plugin :(
 * Dashboard for editing menu, page, plugins (separate from django admin)
 * Api (separate?)
 
