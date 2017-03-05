@@ -67,7 +67,6 @@ TODO
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and
   metaphorical dead weight
-* Plugin based text, link, map references (instead of giant tinymce html field)
 * Images uploads, referencing via plugin :(
 * Dashboard for editing menu, page, plugins (separate from django admin)
 * Api (separate?)
