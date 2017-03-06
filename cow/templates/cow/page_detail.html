@@ -1,8 +1,13 @@
 {% extends "cow/base.html" %}
 
 {% block content %}
-    <div class="bs-callout bs-callout-warning">
+    <div>
         <h4>Page detail for: {{ page.name }}</h4>
-        <article>{{ page.content|safe }}</article>
+        <article>
+        <h6>Plugins <a href="{% url 'plugin_create' page.pk %}">+</a></h6>
+        {% for plugin in page.plugins.all %}
+            <p>{{ plugin }}</p>
+        {% endfor %}
+        </article>
     </div>
 {% endblock %}

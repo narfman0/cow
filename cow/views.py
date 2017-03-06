@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import CreateView, DetailView, ListView
-from .models import Page
+from django.shortcuts import redirect
+from django.views.generic import CreateView, DetailView, FormView, ListView
+
+from .forms import PluginCreateForm
+from .models import Page, Plugin
+from . import plugin_map
 
 
 class PageListView(ListView):
@@ -10,9 +14,23 @@ class PageListView(ListView):
 
 class PageCreateView(CreateView):
     model = Page
-    fields = ['name', 'content']
+    fields = ['name',]
     success_url = reverse_lazy('page_list')
 
 
 class PageDetailView(DetailView):
     model = Page
+
+
+class PluginCreateView(FormView):
+    template_name = 'cow/plugin_create.html'
+    form_class = PluginCreateForm
+
+    def form_valid(self, form):
+        plugin_class = plugin_map[form.cleaned_data['plugin_type']]
+        plugin_instance = plugin_class.objects.create()
+        plugin = Plugin.objects.create(content_object=plugin_instance)
+        page_id = int(filter(str.isdigit, str(self.request.path)))
+        page = Page.objects.get(pk=page_id)
+        page.plugins.add(plugin)
+        return redirect('page_detail', pk=page_id)

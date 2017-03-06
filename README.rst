@@ -65,11 +65,13 @@ Usage
 TODO
 ----
 
+* Page+plugins editing (outside django admin)
+* Menu editing (outside django admin)
+* Api (separate? custom GET only?)
+* Lambda+S3+zappa docs+examples
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and
   metaphorical dead weight
-* Dashboard for editing menu, page, plugins (separate from django admin)
-* Api (separate?)
 
 Features
 --------

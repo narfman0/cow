@@ -20,4 +20,9 @@ urlpatterns = [
         view=views.PageDetailView.as_view(),
         name='page_detail',
     ),
+    url(
+        regex="^page/(?P<pk>\d+)/plugin/create/$",
+        view=views.PluginCreateView.as_view(),
+        name='plugin_create',
+    ),
 ]

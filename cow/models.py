@@ -9,11 +9,12 @@ from django.utils.encoding import python_2_unicode_compatible
 from sorl.thumbnail import ImageField
 from tinymce.models import HTMLField
 
+from . import register
+
 
 @python_2_unicode_compatible
 class Page(models.Model):
     name = models.CharField(max_length=200, db_index=True)
-    content = HTMLField(blank=True, null=True)
     plugins = models.ManyToManyField('Plugin', blank=True)
     created = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
@@ -46,23 +47,26 @@ class Plugin(models.Model):
 
 @python_2_unicode_compatible
 class TextPlugin(models.Model):
-    content = HTMLField()
+    content = HTMLField(blank=True, null=True)
 
     def __str__(self):
         return 'TextPlugin: ' + str(self.content)[:40] + "..."
+register(TextPlugin, 'Text')
 
 
 @python_2_unicode_compatible
 class AddressPlugin(models.Model):
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return 'AddressPlugin: ' + str(self.address)
+register(AddressPlugin, 'Address')
 
 
 @python_2_unicode_compatible
 class ImagePlugin(models.Model):
-    image = ImageField(upload_to="images")
+    image = ImageField(upload_to="images", blank=True, null=True)
 
     def __str__(self):
         return 'ImagePlugin: ' + str(self.image)
+register(ImagePlugin, 'Image')
