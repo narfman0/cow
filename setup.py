@@ -45,7 +45,7 @@ setup(
         'django',
         'django-tinymce',
         'pillow',
-        'sorl-thumbnail'
+        'sorl-thumbnail',
     ],
     license="MIT",
     zip_safe=False,

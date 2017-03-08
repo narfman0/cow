@@ -19,12 +19,12 @@ from cow import models
 class TestCow(TestCase):
     def test_page_simple(self):
         # stupid test to touch code/models
-        page = models.Page.objects.create(name='test1', content='2')
+        page = models.Page.objects.create(name='test1')
         page.delete()
 
     def test_menu_node_simple(self):
         # create a page and point at it with model
-        page = models.Page.objects.create(name='test1', content='2')
+        page = models.Page.objects.create(name='test1')
         child = models.MenuNode.objects.create(title='title1', page=page)
         parent = models.MenuNode.objects.create(title='title1')
         parent.children.add(child)
