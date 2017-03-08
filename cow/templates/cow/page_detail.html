@@ -1,12 +1,24 @@
 {% extends "cow/base.html" %}
 
+{% load class_tag %}
+
 {% block content %}
     <div>
         <h4>Page detail for: {{ page.name }}</h4>
         <article>
         <h6>Plugins <a href="{% url 'plugin_create' page.pk %}">+</a></h6>
         {% for plugin in page.plugins.all %}
-            <p>{{ plugin }}</p>
+        <p>{{ plugin }}
+            {% if plugin.content_object|class_name == 'AddressPlugin' %}
+                <a href="{% url 'address_plugin_edit' plugin.content_object.pk %}">+</a>
+            {% endif %}
+            {% if plugin.content_object|class_name == 'ImagePlugin' %}
+                <a href="{% url 'image_plugin_edit' plugin.content_object.pk %}">+</a>
+            {% endif %}
+            {% if plugin.content_object|class_name == 'TextPlugin' %}
+                <a href="{% url 'text_plugin_edit' plugin.content_object.pk %}">+</a>
+            {% endif %}
+            </p>
         {% endfor %}
         </article>
     </div>

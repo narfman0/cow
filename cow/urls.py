@@ -25,4 +25,19 @@ urlpatterns = [
         view=views.PluginCreateView.as_view(),
         name='plugin_create',
     ),
+    url(
+        regex="^plugin/text/(?P<pk>\d+)/$",
+        view=views.TextPluginUpdateView.as_view(),
+        name='text_plugin_edit',
+    ),
+    url(
+        regex="^plugin/address/(?P<pk>\d+)/$",
+        view=views.AddressPluginUpdateView.as_view(),
+        name='address_plugin_edit',
+    ),
+    url(
+        regex="^plugin/image/(?P<pk>\d+)/$",
+        view=views.ImagePluginUpdateView.as_view(),
+        name='image_plugin_edit',
+    ),
 ]

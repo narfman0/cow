@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse_lazy
-from django.shortcuts import redirect
-from django.views.generic import CreateView, DetailView, FormView, ListView
+from django.shortcuts import redirect, reverse
+from django.views.generic import CreateView, DetailView, FormView, ListView, UpdateView
 
 from .forms import PluginCreateForm
-from .models import Page, Plugin
+from .models import AddressPlugin, ImagePlugin, Page, Plugin, TextPlugin
 from . import plugin_map
 
 
@@ -34,3 +34,28 @@ class PluginCreateView(FormView):
         page = Page.objects.get(pk=page_id)
         page.plugins.add(plugin)
         return redirect('page_detail', pk=page_id)
+
+
+class AddressPluginUpdateView(UpdateView):
+    fields = ['address',]
+    model = AddressPlugin
+
+    def get_success_url(self):
+        return reverse('address_plugin_edit', kwargs={'pk': self.object.pk})
+
+
+
+class ImagePluginUpdateView(UpdateView):
+    fields = ['image',]
+    model = ImagePlugin
+
+    def get_success_url(self):
+        return reverse('image_plugin_edit', kwargs={'pk': self.object.pk})
+
+
+class TextPluginUpdateView(UpdateView):
+    fields = ['content',]
+    model = TextPlugin
+
+    def get_success_url(self):
+        return reverse('text_plugin_edit', kwargs={'pk': self.object.pk})
