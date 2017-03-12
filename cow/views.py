@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.views.generic import CreateView, DetailView, FormView, ListView, UpdateView
 
-from .forms import PluginCreateForm
+from .forms import PluginCreateForm, TextPluginForm
 from .models import AddressPlugin, ImagePlugin, Page, Plugin, TextPlugin
 from . import plugin_map
 
@@ -14,7 +14,7 @@ class PageListView(ListView):
 
 class PageCreateView(CreateView):
     model = Page
-    fields = ['name',]
+    fields = ['name', ]
     success_url = reverse_lazy('page_list')
 
 
@@ -37,16 +37,15 @@ class PluginCreateView(FormView):
 
 
 class AddressPluginUpdateView(UpdateView):
-    fields = ['address',]
+    fields = ['address', ]
     model = AddressPlugin
 
     def get_success_url(self):
         return reverse('address_plugin_edit', kwargs={'pk': self.object.pk})
 
 
-
 class ImagePluginUpdateView(UpdateView):
-    fields = ['image',]
+    fields = ['image', ]
     model = ImagePlugin
 
     def get_success_url(self):
@@ -54,7 +53,7 @@ class ImagePluginUpdateView(UpdateView):
 
 
 class TextPluginUpdateView(UpdateView):
-    fields = ['content',]
+    form_class = TextPluginForm
     model = TextPlugin
 
     def get_success_url(self):
