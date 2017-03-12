@@ -13,9 +13,6 @@ class TextPluginForm(forms.ModelForm):
     content = forms.CharField(widget=TinyMCE(attrs={
         'cols': 80,
         'rows': 30,
-        'mode': "textareas",
-        'theme': "advanced",
-        'plugins': "autolink,advlink,spellchecker,directionality,paste,preview,searchreplace",
     }))
 
     class Meta:
