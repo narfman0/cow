@@ -44,6 +44,7 @@ setup(
     install_requires=[
         'django',
         'django-tinymce',
+        'djangorestframework',
         'pillow',
         'sorl-thumbnail',
     ],

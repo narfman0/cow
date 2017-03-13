@@ -51,6 +51,12 @@ class TextPlugin(models.Model):
 
     def __str__(self):
         return 'TextPlugin: ' + str(self.content)[:40] + "..."
+
+    def api_serialize(self):
+        return {
+            'type': 'text',
+            'content': self.content,
+        }
 register(TextPlugin, 'Text')
 
 
@@ -60,6 +66,12 @@ class AddressPlugin(models.Model):
 
     def __str__(self):
         return 'AddressPlugin: ' + str(self.address)
+
+    def api_serialize(self):
+        return {
+            'type': 'address',
+            'content': self.address,
+        }
 register(AddressPlugin, 'Address')
 
 
@@ -69,4 +81,10 @@ class ImagePlugin(models.Model):
 
     def __str__(self):
         return 'ImagePlugin: ' + str(self.image)
+
+    def api_serialize(self):
+        return {
+            'type': 'image',
+            'content': self.image,
+        }
 register(ImagePlugin, 'Image')

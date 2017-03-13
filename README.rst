@@ -31,6 +31,7 @@ Add it to your `INSTALLED_APPS`:
     INSTALLED_APPS = (
         ...
         'tinymce',
+        'rest_framework',
         'sorl.thumbnail',
         'cow',
         ...
@@ -67,7 +68,7 @@ TODO
 
 * Page+plugins editing (outside django admin)
 * Menu editing (outside django admin)
-* Api (separate? custom GET only?)
+* Api - verify menu
 * Lambda+S3+zappa docs+examples
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and

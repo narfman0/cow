@@ -1,10 +1,19 @@
 # -*- coding: utf-8 -*-
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import routers
 from . import views
+from . import api
+
+
+router = routers.DefaultRouter()
+router.register(r'pages', api.PageViewSet)
+router.register(r'menus', api.MenuViewSet)
 
 
 urlpatterns = [
+    url('^api/', include(router.urls)),
+    url('^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(
         regex="^page/$",
         view=views.PageListView.as_view(),
