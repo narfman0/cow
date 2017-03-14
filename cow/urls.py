@@ -35,6 +35,11 @@ urlpatterns = [
         name='plugin_create',
     ),
     url(
+        regex="^plugin/delete/(?P<pk>\d+)/$",
+        view=views.PluginDeleteView.as_view(),
+        name='plugin_delete',
+    ),
+    url(
         regex="^plugin/text/(?P<pk>\d+)/$",
         view=views.TextPluginUpdateView.as_view(),
         name='text_plugin_edit',

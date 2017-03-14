@@ -1,7 +1,7 @@
 {% extends "cow/base.html" %}
 
 {% block content %}
-<a href="{% url 'page_create' %}">Create page</a>
+<a href="{% url 'page_create' %}">Create page <i class="icon-plus"></i></a>
 <table>
     <thead>
         <tr>
@@ -12,18 +12,19 @@
         </tr>
     </thead>
     <tbody>
-        {% for page in object_list %}
-            <tr>
-                <td><a href="{% url 'page_detail' page.id %}">{{ page.name }}</a></td>
-                <td>
+    {% for page in object_list %}
+        <tr>
+            <td><a href="{% url 'page_detail' page.id %}"><i class="icon-pencil"></i> {{ page.name }}</a></td>
+            <td>
+                <select>
                     {% for plugin in page.plugins.all %}
-                        {{ plugin }}
-                        {% if not forloop.last %},{% endif %}
+                    <option value="{{ plugin.pk }}">{{ plugin }}</option>
                     {% endfor %}
-                </td>
-                <td>{{ page.created }}</td>
-                <td>{{ page.last_updated }}</td>
-            </tr>
+                </select>
+            </td>
+            <td>{{ page.created }}</td>
+            <td>{{ page.last_updated }}</td>
+        </tr>
         {% endfor %}
     </tbody>
 </table>

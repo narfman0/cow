@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, reverse
-from django.views.generic import CreateView, DetailView, FormView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, DetailView, FormView, ListView, UpdateView
 
 from .forms import PluginCreateForm, TextPluginForm
 from .models import AddressPlugin, ImagePlugin, Page, Plugin, TextPlugin
@@ -34,6 +34,16 @@ class PluginCreateView(FormView):
         page = Page.objects.get(pk=page_id)
         page.plugins.add(plugin)
         return redirect('page_detail', pk=page_id)
+
+
+class PluginDeleteView(DeleteView):
+    model = Plugin
+    success_url = reverse_lazy('page_list')
+
+    def delete(self, request, *args, **kwargs):
+        plugin = Plugin.objects.get(pk=kwargs['pk'])
+        plugin.content_object.delete()
+        return super(PluginDeleteView, self).delete(self, request, args, kwargs)
 
 
 class AddressPluginUpdateView(UpdateView):
