@@ -9,12 +9,13 @@
             <th>plugins</th>
             <th>created</th>
             <th>updated</th>
+            <th>actions</th>
         </tr>
     </thead>
     <tbody>
     {% for page in object_list %}
         <tr>
-            <td><a href="{% url 'page_detail' page.id %}"><i class="icon-pencil"></i> {{ page.name }}</a></td>
+            <td><a href="{% url 'page_detail' page.id %}">{{ page.name }}</a></td>
             <td>
                 <select>
                     {% for plugin in page.plugins.all %}
@@ -24,6 +25,10 @@
             </td>
             <td>{{ page.created }}</td>
             <td>{{ page.last_updated }}</td>
+            <td>
+                <a href="{% url 'page_detail' page.id %}"><i class="icon-pencil"></i></a>
+                <a href="{% url 'page_delete' page.id %}"><i class="icon-cancel"></i></a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>

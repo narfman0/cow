@@ -22,6 +22,19 @@ class PageDetailView(DetailView):
     model = Page
 
 
+class PageDeleteView(DeleteView):
+    model = Page
+    success_url = reverse_lazy('page_list')
+
+    def delete(self, request, *args, **kwargs):
+        page = Page.objects.get(pk=kwargs['pk'])
+        import pdb; pdb.set_trace()
+        for page_plugin in page.plugins.all():
+            page_plugin.content_object.delete()
+            page_plugin.delete()
+        return super(PageDeleteView, self).delete(self, request, args, kwargs)
+
+
 class PluginCreateView(FormView):
     template_name = 'cow/plugin_create.html'
     form_class = PluginCreateForm

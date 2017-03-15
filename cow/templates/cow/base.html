@@ -7,6 +7,12 @@
         <link href="{% static "cow/css/cowhide.css" %}" rel="stylesheet" title="cow fonts">
     </head>
     <body>
+        <header>
+            <nav>
+                <a href="{% url 'page_list' %}">Home <i class="icon-home"></i></a>
+                <a href="javascript:history.back()">Back <i class="icon-left-open"></i></a>
+            </nav>
+        </header>
         <div class="container">
             {% block content %}{% endblock content %}
         </div>

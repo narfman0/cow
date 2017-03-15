@@ -6,21 +6,42 @@
 <div>
     <h4>Page detail for: {{ page.name }}</h4>
     <article>
-    <h6>Plugins <a href="{% url 'plugin_create' page.pk %}"><i class="icon-plus"></i></a></h6>
-        {% for plugin in page.plugins.all %}
-        <p>{{ plugin }}
-            {% if plugin.content_object|class_name == 'AddressPlugin' %}
-            <a href="{% url 'address_plugin_edit' plugin.content_object.pk %}"><i class="icon-pencil"></i></a>
-            {% endif %}
-            {% if plugin.content_object|class_name == 'ImagePlugin' %}
-            <a href="{% url 'image_plugin_edit' plugin.content_object.pk %}"><i class="icon-pencil"></i></a>
-            {% endif %}
-            {% if plugin.content_object|class_name == 'TextPlugin' %}
-            <a href="{% url 'text_plugin_edit' plugin.content_object.pk %}"><i class="icon-pencil"></i></a>
-            {% endif %}
-            <a href="{% url 'plugin_delete' plugin.pk %}"><i class="icon-cancel"></i></a>
-        </p>
-        {% endfor %}
+        <p>Plugins <a href="{% url 'plugin_create' page.pk %}"><i class="icon-plus"></i></a></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for plugin in page.plugins.all %}
+                <tr>
+                    <td>{{ plugin }}</td>
+                    <td>
+                        {% if plugin.content_object|class_name == 'AddressPlugin' %}
+                        <a href="{% url 'address_plugin_edit' plugin.content_object.pk %}">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        {% endif %}
+                        {% if plugin.content_object|class_name == 'ImagePlugin' %}
+                        <a href="{% url 'image_plugin_edit' plugin.content_object.pk %}">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        {% endif %}
+                        {% if plugin.content_object|class_name == 'TextPlugin' %}
+                        <a href="{% url 'text_plugin_edit' plugin.content_object.pk %}">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        {% endif %}
+                        <a href="{% url 'plugin_delete' plugin.pk %}">
+                            <i class="icon-cancel"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </article>
 </div>
 {% endblock %}

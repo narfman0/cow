@@ -25,6 +25,11 @@ urlpatterns = [
         name='page_create',
     ),
     url(
+        regex="^page/delete/(?P<pk>\d+)/$",
+        view=views.PageDeleteView.as_view(),
+        name='page_delete',
+    ),
+    url(
         regex="^page/(?P<pk>\d+)/$",
         view=views.PageDetailView.as_view(),
         name='page_detail',
