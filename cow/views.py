@@ -28,7 +28,6 @@ class PageDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         page = Page.objects.get(pk=kwargs['pk'])
-        import pdb; pdb.set_trace()
         for page_plugin in page.plugins.all():
             page_plugin.content_object.delete()
             page_plugin.delete()
