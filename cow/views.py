@@ -4,12 +4,57 @@ from django.shortcuts import redirect, reverse
 from django.views.generic import CreateView, DeleteView, DetailView, FormView, ListView, UpdateView
 
 from .forms import PluginCreateForm, TextPluginForm
-from .models import AddressPlugin, ImagePlugin, Page, Plugin, TextPlugin
+from .models import AddressPlugin, ImagePlugin, Menu, Page, Plugin, TextPlugin
 from . import plugin_map
+
+
+class MenuCreateView(CreateView):
+    model = Menu
+    fields = ['title', 'page', 'children', 'root', 'enabled']
+    success_url = reverse_lazy('page_list')
+
+
+class MenuChildCreateView(CreateView):
+    model = Menu
+    fields = ['title', 'page', 'children', 'root', 'enabled']
+
+    def form_valid(self, form):
+        parent = Menu.objects.get(pk=int(self.kwargs['pk']))
+        form.instance.save()
+        parent.children.add(form.instance)
+        return redirect('menu_detail', pk=form.instance.pk)
+
+
+class MenuDetailView(DetailView):
+    model = Menu
+
+
+class MenuDeleteView(DeleteView):
+    model = Menu
+    success_url = reverse_lazy('page_list')
+
+    def delete(self, request, *args, **kwargs):
+        menu = Menu.objects.get(pk=kwargs['pk'])
+        for menu_node in menu.children.all():
+            menu_node.delete()
+        return super(MenuDeleteView, self).delete(self, request, args, kwargs)
+
+
+class MenuUpdateView(UpdateView):
+    fields = ['title', 'page', 'children', 'root', 'enabled']
+    model = Menu
+
+    def get_success_url(self):
+        return reverse('menu_detail', kwargs={'pk': self.object.pk})
 
 
 class PageListView(ListView):
     model = Page
+
+    def get_context_data(self, **kwargs):
+        context = super(PageListView, self).get_context_data(**kwargs)
+        context['menus'] = Menu.objects.filter(root=True)
+        return context
 
 
 class PageCreateView(CreateView):

@@ -1,5 +1,5 @@
 from rest_framework import serializers, viewsets
-from .models import Page, Plugin, MenuNode
+from .models import Menu, Page, Plugin
 
 
 class PageSerializer(serializers.ModelSerializer):
@@ -17,10 +17,11 @@ class PageSerializer(serializers.ModelSerializer):
         return data
 
 
-class MenuNodeSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MenuNode
-        fields = ('id', 'title', 'page', 'children', 'enabled')
+        depth = 10  # lolworthily high, also the max :)
+        model = Menu
+        fields = ('id', 'title', 'enabled', 'root', 'children')
 
 
 class PageViewSet(viewsets.ModelViewSet):
@@ -29,5 +30,5 @@ class PageViewSet(viewsets.ModelViewSet):
 
 
 class MenuViewSet(viewsets.ModelViewSet):
-    queryset = MenuNode.objects.all()
-    serializer_class = MenuNodeSerializer
+    queryset = Menu.objects.filter(root=True)
+    serializer_class = MenuSerializer

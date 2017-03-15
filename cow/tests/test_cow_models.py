@@ -7,11 +7,7 @@ test_cow
 
 Tests for `cow` models module.
 """
-from datetime import timedelta
-from uuid import uuid4
-
 from django.test import TestCase
-from django.utils import timezone
 
 from cow import models
 
@@ -25,8 +21,8 @@ class TestCow(TestCase):
     def test_menu_node_simple(self):
         # create a page and point at it with model
         page = models.Page.objects.create(name='test1')
-        child = models.MenuNode.objects.create(title='title1', page=page)
-        parent = models.MenuNode.objects.create(title='title1')
+        child = models.Menu.objects.create(title='title1', page=page)
+        parent = models.Menu.objects.create(title='title1')
         parent.children.add(child)
         parent.save()
         self.assertTrue(parent.children.count() > 0)

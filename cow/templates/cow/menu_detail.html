@@ -1,0 +1,36 @@
+{% extends "cow/base.html" %}
+
+{% load class_tag %}
+
+{% block content %}
+<div>
+    <p>Menu detail for: {{ menu.title }}</p>
+    <p>Edit menu <a href="{% url 'menu_update' menu.pk %}"><i class="icon-pencil"></i></a></p>
+    <article>
+        <p>Children <a href="{% url 'menu_child_create' menu.pk %}"><i class="icon-plus"></i></a></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for child in menu.children.all %}
+                <tr>
+                    <td>{{ child }}</td>
+                    <td>
+                        <a href="{% url 'menu_detail' child.pk %}">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <a href="{% url 'menu_delete' child.pk %}">
+                            <i class="icon-cancel"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </article>
+</div>
+{% endblock %}

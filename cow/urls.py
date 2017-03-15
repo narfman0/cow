@@ -15,6 +15,31 @@ urlpatterns = [
     url('^api/', include(router.urls)),
     url('^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(
+        regex="^menu/create/$",
+        view=csrf_exempt(views.MenuCreateView.as_view()),
+        name='menu_create',
+    ),
+    url(
+        regex="^menu/(?P<pk>\d+)/create/$",
+        view=csrf_exempt(views.MenuChildCreateView.as_view()),
+        name='menu_child_create',
+    ),
+    url(
+        regex="^menu/delete/(?P<pk>\d+)/$",
+        view=views.MenuDeleteView.as_view(),
+        name='menu_delete',
+    ),
+    url(
+        regex="^menu/update/(?P<pk>\d+)/$",
+        view=views.MenuUpdateView.as_view(),
+        name='menu_update',
+    ),
+    url(
+        regex="^menu/(?P<pk>\d+)/$",
+        view=views.MenuDetailView.as_view(),
+        name='menu_detail',
+    ),
+    url(
         regex="^$",
         view=views.PageListView.as_view(),
         name='page_list',

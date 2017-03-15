@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AddressPlugin, ImagePlugin, MenuNode, Page, Plugin, TextPlugin
+from .models import AddressPlugin, ImagePlugin, Menu, Page, Plugin, TextPlugin
 
 
 class PageAdmin(admin.ModelAdmin):
@@ -8,10 +8,10 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page, PageAdmin)
 
 
-class MenuNodeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'page', 'enabled')
-    search_fields = ('id', 'title', 'page', 'enabled')
-admin.site.register(MenuNode, MenuNodeAdmin)
+class MenuAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'page', 'enabled', 'root')
+    search_fields = ('id', 'title', 'page', 'enabled', 'root')
+admin.site.register(Menu, MenuAdmin)
 
 
 class PluginAdmin(admin.ModelAdmin):
