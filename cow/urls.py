@@ -15,7 +15,7 @@ urlpatterns = [
     url('^api/', include(router.urls)),
     url('^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(
-        regex="^page/$",
+        regex="^$",
         view=views.PageListView.as_view(),
         name='page_list',
     ),
