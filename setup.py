@@ -8,7 +8,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '0.2.2'
+version = '0.2.3'
 
 if sys.argv[-1] == 'publish':
     try:
@@ -50,7 +50,7 @@ setup(
     ],
     license="MIT",
     zip_safe=False,
-    keywords=['django','cow','cms'],
+    keywords=['django', 'cow', 'cms'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
