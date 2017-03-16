@@ -5,7 +5,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '0.3.3'
+version = '0.3.4'
 readme = open('README.rst').read()
 
 setup(
@@ -25,7 +25,6 @@ setup(
         'django-tinymce',
         'djangorestframework',
         'pillow',
-        'sorl-thumbnail',
     ],
     license="MIT",
     zip_safe=False,

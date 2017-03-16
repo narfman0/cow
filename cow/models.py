@@ -6,7 +6,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from sorl.thumbnail import ImageField
 from tinymce.models import HTMLField
 
 from . import register
@@ -80,7 +79,7 @@ register(AddressPlugin, 'Address')
 
 @python_2_unicode_compatible
 class ImagePlugin(models.Model):
-    image = ImageField(upload_to="images", blank=True, null=True)
+    image = models.ImageField(upload_to="images", blank=True, null=True)
 
     def __str__(self):
         return 'ImagePlugin: ' + str(self.image)
@@ -88,6 +87,6 @@ class ImagePlugin(models.Model):
     def api_serialize(self):
         return {
             'type': 'image',
-            'content': self.image,
+            'content': self.image.url,
         }
 register(ImagePlugin, 'Image')

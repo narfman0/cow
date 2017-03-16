@@ -32,7 +32,6 @@ Add it to your `INSTALLED_APPS`:
         ...
         'tinymce',
         'rest_framework',
-        'sorl.thumbnail',
         'cow',
         ...
     )
@@ -67,7 +66,6 @@ Usage
 TODO
 ----
 
-* Fix image upload outside of admin
 * Unit tests - menus and some basic view checks
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and

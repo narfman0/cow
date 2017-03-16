@@ -17,7 +17,6 @@ try:
             "django.contrib.auth",
             "django.contrib.contenttypes",
             "django.contrib.sites",
-            "sorl.thumbnail",
             "cow",
         ],
         SITE_ID=1,
