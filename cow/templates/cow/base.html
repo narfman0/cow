@@ -4,7 +4,8 @@
     <head>
         <title>{% block title %}cowdash{% endblock title %}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link href="{% static "cow/css/cowhide.css" %}" rel="stylesheet" title="cow fonts">
+        <link async href="{% static "cow/css/cowhide.css" %}" rel="stylesheet" title="cow fonts">
+        {% block head %}{% endblock %}
     </head>
     <body>
         <header>

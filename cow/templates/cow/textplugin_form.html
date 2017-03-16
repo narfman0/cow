@@ -1,5 +1,9 @@
 {% extends "cow/base.html" %}
 
+{% block head %}
+{{ form.media }}
+{% endblock %}
+
 {% block content %}
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}

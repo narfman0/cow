@@ -66,7 +66,6 @@ Usage
 TODO
 ----
 
-* FIXME TextPlugin TinyMCE edit
 * Lambda+S3+zappa docs+examples
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and
