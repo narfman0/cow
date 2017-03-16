@@ -67,7 +67,6 @@ Usage
 TODO
 ----
 
-* Fix permissions (all open)
 * Fix image upload outside of admin
 * Unit tests - menus and some basic view checks
 * Add deliciously overweight but relatable cow icon, as an endearing
