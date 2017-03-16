@@ -62,11 +62,14 @@ Usage
 * This should leave you with a hierarchy of pages (and their content)
 * The API should give you a sitemap-like structure, and upon navigation,
   a further API call would give all the specific content for plugin
+* Check examples for working samples of use!
 
 TODO
 ----
 
-* Lambda+S3+zappa docs+examples
+* Fix permissions (all open)
+* Fix image upload outside of admin
+* Unit tests - menus and some basic view checks
 * Add deliciously overweight but relatable cow icon, as an endearing
   and manipulating draw in for suckers wanted to support literal and
   metaphorical dead weight

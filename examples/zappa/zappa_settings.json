@@ -1,0 +1,6 @@
+{
+  "prod": {
+    "django_settings": "zappa_eg.settings",
+    "s3_bucket": "atlaslabsllc"
+  }
+}

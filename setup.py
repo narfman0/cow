@@ -1,32 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os
-import sys
-
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
-version = '0.3.1'
-
-if sys.argv[-1] == 'publish':
-    try:
-        import wheel
-        print("Wheel version: ", wheel.__version__)
-    except ImportError:
-        print('Wheel library missing. Please run "pip install wheel"')
-        sys.exit()
-    os.system('python setup.py sdist upload')
-    os.system('python setup.py bdist_wheel upload')
-    sys.exit()
-
-if sys.argv[-1] == 'tag':
-    print("Tagging the version on git:")
-    os.system("git tag -a %s -m 'version %s'" % (version, version))
-    os.system("git push --tags")
-    sys.exit()
-
+version = '0.3.2'
 readme = open('README.rst').read()
 
 setup(
@@ -52,7 +31,7 @@ setup(
     zip_safe=False,
     keywords=['django', 'cow', 'cms'],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
