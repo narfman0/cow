@@ -18,7 +18,7 @@ class TestCow(TestCase):
         page = models.Page.objects.create(name='test1')
         page.delete()
 
-    def test_menu_node_simple(self):
+    def test_menu_simple(self):
         # create a page and point at it with model
         page = models.Page.objects.create(name='test1')
         child = models.Menu.objects.create(title='title1', page=page)
@@ -42,4 +42,3 @@ class TestCow(TestCase):
         text_plugin.delete()
         plugin.delete()
         page.delete()
-

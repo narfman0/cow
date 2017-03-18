@@ -35,8 +35,8 @@ class MenuDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         menu = Menu.objects.get(pk=kwargs['pk'])
-        for menu_node in menu.children.all():
-            menu_node.delete()
+        for menu in menu.children.all():
+            menu.delete()
         return super(MenuDeleteView, self).delete(self, request, args, kwargs)
 
 
