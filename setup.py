@@ -5,7 +5,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '0.3.4'
+version = '1.0.0'
 readme = open('README.rst').read()
 
 setup(
