@@ -12,6 +12,9 @@
             <nav>
                 <a href="{% url 'page_list' %}">Home <i class="icon-home"></i></a>
                 <a href="javascript:history.back()">Back <i class="icon-left-open"></i></a>
+                {% if user.is_staff %}
+                    <a href="admin/">Admin <i class="icon-pencil"></i></a>
+                {% endif %}
             </nav>
         </header>
         <div class="container">
