@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="post">{% csrf_token %}
+<form class="pure-form" action="" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Update" />
+    <input class="pure-button pure-button-primary" type="submit" value="Update" />
 </form>
 {% endblock %}

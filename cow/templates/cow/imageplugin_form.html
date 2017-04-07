@@ -1,8 +1,8 @@
 {% extends "cow/base.html" %}
 
 {% block content %}
-<form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+<form class="pure-form" action="" enctype="multipart/form-data" method="post">{% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Update" />
+    <input class="pure-button pure-button-primary" type="submit" value="Update" />
 </form>
 {% endblock %}

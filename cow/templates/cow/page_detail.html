@@ -6,8 +6,8 @@
 <div>
     <h4>Page detail for: {{ page.name }}</h4>
     <article>
-        <p>Plugins <a href="{% url 'plugin_create' page.pk %}"><i class="icon-plus"></i></a></p>
-        <table>
+        <p><a class="pure-button pure-button-primary" href="{% url 'plugin_create' page.pk %}">Plugins <i class="icon-plus"></i></a></p>
+        <table class="pure-table">
             <thead>
                 <tr>
                     <th>name</th>

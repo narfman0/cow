@@ -1,8 +1,8 @@
 {% extends "cow/base.html" %}
 
 {% block content %}
-<a href="{% url 'page_create' %}">Create page <i class="icon-plus"></i></a>
-<table>
+<a class="pure-button pure-button-primary" href="{% url 'page_create' %}">Create page <i class="icon-plus"></i></a>
+<table class="pure-table">
     <thead>
         <tr>
             <th>name</th>
@@ -34,8 +34,8 @@
     </tbody>
 </table>
 
-<a href="{% url 'menu_create' %}">Create menu <i class="icon-plus"></i></a>
-<table>
+<a class="pure-button pure-button-primary" href="{% url 'menu_create' %}">Create menu <i class="icon-plus"></i></a>
+<table class="pure-table">
     <thead>
         <tr>
             <th>name</th>
