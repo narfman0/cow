@@ -1,5 +1,10 @@
+from django.conf import settings
 from rest_framework import serializers, viewsets
 from .models import Menu, Page, Plugin
+
+
+# lolworthily high, also the max :)
+MENU_DEPTH = getattr(settings, 'COW_API_MENU_DEPTH', 10)
 
 
 class PageSerializer(serializers.ModelSerializer):
@@ -19,7 +24,7 @@ class PageSerializer(serializers.ModelSerializer):
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
-        depth = 10  # lolworthily high, also the max :)
+        depth = MENU_DEPTH
         model = Menu
         fields = ('id', 'title', 'enabled', 'root', 'children')
 
