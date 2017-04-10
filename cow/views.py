@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.views.generic import CreateView, DeleteView, DetailView, FormView, ListView, UpdateView
 
-from .forms import PluginCreateForm, TextPluginForm
+from .forms import PluginCreateForm
 from .models import AddressPlugin, ImagePlugin, Menu, Page, Plugin, TextPlugin
 from . import plugin_map
 
@@ -120,7 +120,7 @@ class ImagePluginUpdateView(UpdateView):
 
 
 class TextPluginUpdateView(UpdateView):
-    form_class = TextPluginForm
+    fields = ['content', ]
     model = TextPlugin
 
     def get_success_url(self):

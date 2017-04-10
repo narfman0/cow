@@ -30,7 +30,6 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'tinymce',
         'rest_framework',
         'cow',
         ...
@@ -46,7 +45,6 @@ Add cow's URL patterns:
     urlpatterns = [
         ...
         url(r'^', include(cow_urls)),
-        url(r'^tinymce/', include('tinymce.urls')),
         ...
     ]
 

@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'tinymce',
     'cow',
 ]
 
@@ -89,13 +88,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-TINYMCE_DEFAULT_CONFIG = {
-    'mode': "textareas",
-    'theme': "advanced",
-    'plugins': "autolink,advlink,spellchecker,directionality,paste,preview,searchreplace",
-}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/

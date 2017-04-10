@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import tinymce.models
 
 
 class Migration(migrations.Migration):
@@ -64,7 +63,7 @@ class Migration(migrations.Migration):
             name='TextPlugin',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', tinymce.models.HTMLField(blank=True, null=True)),
+                ('content', models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.AddField(

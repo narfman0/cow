@@ -6,8 +6,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from tinymce.models import HTMLField
-
 from . import register
 
 
@@ -49,7 +47,7 @@ class Plugin(models.Model):
 
 @python_2_unicode_compatible
 class TextPlugin(models.Model):
-    content = HTMLField(blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return 'TextPlugin: ' + str(self.content)[:40] + "..."
