@@ -58,8 +58,8 @@ urlpatterns = [
     ),
     url(
         regex="^page/(?P<pk>\d+)/$",
-        view=login_required(views.PageDetailView.as_view()),
-        name='page_detail',
+        view=login_required(views.PageUpdateView.as_view()),
+        name='page_update',
     ),
     url(
         regex="^page/(?P<pk>\d+)/plugin/create/$",

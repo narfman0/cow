@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 
 from . import register
@@ -18,6 +19,9 @@ class Page(models.Model):
 
     def __str__(self):
         return 'Page: ' + str(self.name)
+
+    def get_absolute_url(self):
+        return reverse('page_update', args=[self.id])
 
 
 @python_2_unicode_compatible

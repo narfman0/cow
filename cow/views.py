@@ -63,8 +63,10 @@ class PageCreateView(CreateView):
     success_url = reverse_lazy('page_list')
 
 
-class PageDetailView(DetailView):
+class PageUpdateView(UpdateView):
+    template_name = 'cow/page_update.html'
     model = Page
+    fields = ['name', ]
 
 
 class PageDeleteView(DeleteView):
@@ -90,7 +92,7 @@ class PluginCreateView(FormView):
         page_id = int(filter(str.isdigit, str(self.request.path)))
         page = Page.objects.get(pk=page_id)
         page.plugins.add(plugin)
-        return redirect('page_detail', pk=page_id)
+        return redirect('page_update', pk=page_id)
 
 
 class PluginDeleteView(DeleteView):

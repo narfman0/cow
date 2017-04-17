@@ -6,6 +6,10 @@
 <div>
     <h4>Page detail for: {{ page.name }}</h4>
     <article>
+        <form class="pure-form" action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input class="pure-button pure-button-primary" type="submit" value="Update" />
+        </form>
         <p><a class="pure-button pure-button-primary" href="{% url 'plugin_create' page.pk %}">Plugins <i class="icon-plus"></i></a></p>
         <table class="pure-table">
             <thead>

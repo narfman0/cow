@@ -15,7 +15,7 @@
     <tbody>
     {% for page in object_list %}
         <tr>
-            <td><a href="{% url 'page_detail' page.pk %}">{{ page.name }}</a></td>
+            <td><a href="{% url 'page_update' page.pk %}">{{ page.name }}</a></td>
             <td>
                 <select>
                     {% for plugin in page.plugins.all %}
@@ -26,7 +26,7 @@
             <td>{{ page.created }}</td>
             <td>{{ page.last_updated }}</td>
             <td>
-                <a href="{% url 'page_detail' page.pk %}"><i class="icon-pencil"></i></a>
+                <a href="{% url 'page_update' page.pk %}"><i class="icon-pencil"></i></a>
                 <a href="{% url 'page_delete' page.pk %}"><i class="icon-cancel"></i></a>
             </td>
         </tr>
