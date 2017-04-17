@@ -61,6 +61,9 @@ class TextPlugin(models.Model):
             'type': 'text',
             'content': self.content,
         }
+
+    def get_absolute_url(self):
+        return reverse('text_plugin_edit', args=[self.id])
 register(TextPlugin, 'Text')
 
 
@@ -76,6 +79,9 @@ class AddressPlugin(models.Model):
             'type': 'address',
             'content': self.address,
         }
+
+    def get_absolute_url(self):
+        return reverse('address_plugin_edit', args=[self.id])
 register(AddressPlugin, 'Address')
 
 
@@ -91,4 +97,7 @@ class ImagePlugin(models.Model):
             'type': 'image',
             'content': self.image.url,
         }
+
+    def get_absolute_url(self):
+        return reverse('image_plugin_edit', args=[self.id])
 register(ImagePlugin, 'Image')

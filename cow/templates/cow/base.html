@@ -27,7 +27,7 @@ a, u {
                     </li>
                 {% if user.is_staff %}
                     <li class="pure-menu-item">
-                        <a class="pure-menu-link" href="admin/">Admin <i class="icon-pencil"></i></a>
+                        <a class="pure-menu-link" href="{% url 'page_list' %}admin/">Admin <i class="icon-pencil"></i></a>
                     </li>
                 {% endif %}
                 </ul>

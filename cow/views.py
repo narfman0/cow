@@ -92,7 +92,7 @@ class PluginCreateView(FormView):
         page_id = int(filter(str.isdigit, str(self.request.path)))
         page = Page.objects.get(pk=page_id)
         page.plugins.add(plugin)
-        return redirect('page_update', pk=page_id)
+        return redirect(plugin_instance.get_absolute_url())
 
 
 class PluginDeleteView(DeleteView):
