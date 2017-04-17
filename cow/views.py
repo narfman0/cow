@@ -104,6 +104,13 @@ class PluginDeleteView(DeleteView):
         plugin.content_object.delete()
         return super(PluginDeleteView, self).delete(self, request, args, kwargs)
 
+    def get_success_url(self):
+        queryset = self.object.page_set.all()
+        if queryset:
+            page = queryset.first()
+            return reverse('page_update', args=[page.id])
+        return reverse('page_list')
+
 
 class AddressPluginUpdateView(UpdateView):
     fields = ['address', ]
