@@ -13,7 +13,7 @@ router.register(r'menus', api.MenuViewSet)
 
 
 urlpatterns = [
-    url('^accounts/login/$', auth_views.login, {'template_name': 'admin/login.html'}),
+    url('^accounts/login/$', auth_views.login, {'template_name': 'admin/login.html'}, name='cow_login'),
     url('^api/', include(router.urls)),
     url('^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(
